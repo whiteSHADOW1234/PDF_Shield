@@ -1,0 +1,75 @@
+// {
+//     "version": "2.0.0",
+//     "tasks": [
+//         {
+//             "type": "shell",
+//             "label": "g++.exe build active file",
+//             //"command": "D:/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/g++.exe",
+//             "args": [ //编译时候的参数
+//                 "-g", //添加gdb调试选项
+//                 "${file}",
+//                 "-o",//指定生成可执行文件的名称
+//                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
+//             ],
+//             //"options": {
+//             //    "cwd": "D:/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin"
+//             //},
+//             "problemMatcher": [
+//                 "$gcc"
+//             ],
+//             "group": "build"
+//         },
+//         {
+//             "type": "cppbuild",
+//             "label": "C/C++: g++.exe 建置使用中檔案",
+//             "command": "C:\\Program Files\\CodeBlocks\\MinGW\\bin\\g++.exe",
+//             "args": [
+//                 "-g",
+//                 "${file}",
+//                 "-o",
+//                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
+//             ],
+//             "options": {
+//                 "cwd": "C:\\Program Files\\CodeBlocks\\MinGW\\bin"
+//             },
+//             "problemMatcher": [
+//                 "$gcc"
+//             ],
+//             "group": {
+//                 "kind": "build",
+//                 "isDefault": true //表示快捷键Ctrl+Shift+B可以运行该任务
+//             },
+//             "detail": "偵錯工具產生的工作。"
+//         }
+//     ]
+// }
+
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++.exe build active file",
+            "command": "C:\\Program Files\\CodeBlocks\\MinGW\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "C:\\Program Files\\CodeBlocks\\MinGW\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
+
