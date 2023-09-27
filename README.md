@@ -66,25 +66,27 @@
 2. Next, use the `.add_js()` method of the `PyPDF2` library to create a Python script:
     ```python
     import PyPDF2
-
-    def embed_javascript(pdf_file, js_code, page):
+    
+    def embed_javascript(pdf_file, js_code):
         pdf_reader = PyPDF2.PdfReader(pdf_file)
         pdf_writer = PyPDF2.PdfWriter()
-
-        page = pdf_reader.pages[page - 1]
-        pdf_writer.add_page(page)
+    
+        for page in pdf_reader.pages:
+            pdf_writer.add_page(page)
         pdf_writer.add_js(js_code)
+    
         with open('embedded.pdf', "wb") as f:
             pdf_writer.write(f)
-
-
+    
     javascript_code = '''
-        app.alert("Hello, World!");
+    app.alert("Hello, World!");
     '''
-
-    pdf_file_path = 'FILE_NAME.pdf'
+    
+    pdf_file_path = 'Testing002.pdf'
     with open(pdf_file_path, 'rb') as pdf_file:
-        embed_javascript(pdf_file, javascript_code, 1)
+        embed_javascript(pdf_file, javascript_code)
+    
+
 
     ```
 3. Please ensure that you run the Python file you've recently generated. 
