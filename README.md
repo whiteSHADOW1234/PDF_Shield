@@ -22,6 +22,7 @@
     ![HklEAUge6](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/e2dacfa3-91dc-4154-bd61-9c236d0a70f4)
 
     ![rJlrCUxx6](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/ce28a80d-543c-4463-aca9-0da144dec32b)
+
     **NOTED: Name objects begin with a forward slash (`/`), and the letter within can be represented in hexadecimal notation!!!**
 5. Here's a breakdown of how objects are parsed:
     ![SkrzWPlxp](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/48aea2be-2184-4f33-b82c-571c6c118898)
@@ -87,6 +88,7 @@
 
     ```
 3. Please ensure that you run the Python file you've recently generated. 
+
     **Don't forget to update the `FILE_NAME` accordingly!**
 4. Open the `embedded.pdf` file in the listed web browsers to verify that they trigger an alert window, confirming the successful execution of the embedded JavaScript code within the PDF.
 
@@ -102,8 +104,7 @@
 
 
 ## Defense With This Tool
-<details>
-<summary> Main Idea </summary>
+### Main Idea 
 &nbsp;&nbsp;Using the fundamental PDF concept described in the **"Basic PDF Syntax"** section, we can infer that if we remove the object containing `/JavaScript` from the PDF, the JavaScript code will no longer be able to be executed by modern browsers' built-in PDF reader engines.
 
 &nbsp;&nbsp;Let me clarify the key aspects of this project briefly:
@@ -113,13 +114,13 @@
     4. If such variations are detected, it displays the corresponding object in a separate pop-up window.
     5. Additionally, the system should have the capability to remove the identified objects from the PDF.
 
-</details>
 
 
+### Implementing Section
 &nbsp;&nbsp;Let's now consider a scenario where we have acquired two PDFs: `blank.pdf` and `embedded.pdf`, both of which are available in this GitHub repository. Our challenge is to determine whether there is any embedded code within them, even though we lack prior knowledge.
 
 &nbsp;&nbsp;You can conquer the challenge mentioned above with this project by following these steps:
-1. Please run the `final.py` script located in this GitHub repository. 
+1. Run the `final.py` script located in this GitHub repository. 
 Before executing it, ensure that you've executed the following commands in the terminal within the current project directory:
     ```python
     pip install tk
@@ -129,17 +130,21 @@ Before executing it, ensure that you've executed the following commands in the t
     pip install PyMuPDF  # This library is also known as fitz.
     ```
 2. Afterward, an upload window will appear.
+
    ![ryLOoV-g6](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/a4a8b30e-ceda-4aff-b434-d455dd5e7668)
 3. Simply drag and drop the file `blank.pdf` onto the window. If there is no JavaScript code detected in the PDF, you will receive a notification.
+
    ![By_AiNZla](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/b6d35e23-4587-4fb4-9b92-6ddd44e330d3)
 4. However, if you upload the file `embedded.pdf`, the script will detect the JavaScript code.
+
     ![HJqznN-ga](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/0f190c73-b71d-4453-a247-0cc85f710f6c)
-5. You can view more information about the discovered objects by clicking the `Show` button after dropping an embedded PDF file. These details include item names, numbers, generations, and contents.
+5. You can view more information about the discovered objects by clicking the `Show` button after dropping an embedded PDF file. These details include numbers, generations, and contents.
 
     ![SkuqhE-ep](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/34a8e1c7-9580-4709-9638-c7937b477e00)
-6. If you wish to remove a detected object, click the Remove button. This action will generate a modified PDF named `embedded-removed.pdf` and display a pop-up window with its location.
+6. If you wish to remove the detected object, click the Remove button. This action will generate a modified PDF named `embedded-removed.pdf` and display a pop-up window with its location.
+
     ![ry9a04Wg6](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/dc5be9ad-f2d7-4b86-92c0-b3cd05139c3e)
-7. As soon as you open the recently modified PDF, you'll see that JavaScript code won't run when using the built-in PDF reader engines of web browsers.
+7. As soon as you open the recently modified PDF, you'll see that the JavaScript code won't run anymore when using the built-in PDF reader engines of web browsers.
  
     A. Microsoft Edge:
         ![S1ekxBWlp](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/ebe13b30-781c-48fa-83ad-597174d63626)
