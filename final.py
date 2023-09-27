@@ -263,7 +263,7 @@ def exit_window():
 
 # Create a Tkinter window
 
-root.title("PDF Sheld")
+root.title("PDF Shield")
 
 # Configure the window height
 root.geometry("380x450")
@@ -286,7 +286,7 @@ root.drop_target_register(DND_FILES)
 root.dnd_bind('<<Drop>>', drop_and_display)
 
 # Add an icon to the window
-root.iconbitmap('sheld_icon.ico')
+root.iconbitmap('shield_icon.ico')
 
 # Disable window resizing
 root.resizable(False, False)
