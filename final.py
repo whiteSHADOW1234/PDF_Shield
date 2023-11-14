@@ -104,13 +104,13 @@ def decode_hex(match):
     return chr(int(match.group(0)[1:], 16))
 
 # Define regular expression patterns for both variations
-js_pattern = re.compile(r'/[jJ][sS](?:#(?:[0-9a-fA-F]{2}))*', re.IGNORECASE)
-javascript_pattern = re.compile(r'/(?:#(?:[0-9a-fA-F]{2}))*J(?:#(?:[0-9a-fA-F]{2}))*a(?:#(?:[0-9a-fA-F]{2}))*v(?:#(?:[0-9a-fA-F]{2}))*a(?:#(?:[0-9a-fA-F]{2}))*S(?:#(?:[0-9a-fA-F]{2}))*c(?:#(?:[0-9a-fA-F]{2}))*r(?:#(?:[0-9a-fA-F]{2}))*i(?:#(?:[0-9a-fA-F]{2}))*p(?:#(?:[0-9a-fA-F]{2}))*t', re.IGNORECASE)
+js_pattern = re.compile(r' /[jJ][sS](?:#(?:[0-9a-fA-F]{2}))*', re.IGNORECASE)
+javascript_pattern = re.compile(r' /(?:#(?:[0-9a-fA-F]{2}))*J(?:#(?:[0-9a-fA-F]{2}))*a(?:#(?:[0-9a-fA-F]{2}))*v(?:#(?:[0-9a-fA-F]{2}))*a(?:#(?:[0-9a-fA-F]{2}))*S(?:#(?:[0-9a-fA-F]{2}))*c(?:#(?:[0-9a-fA-F]{2}))*r(?:#(?:[0-9a-fA-F]{2}))*i(?:#(?:[0-9a-fA-F]{2}))*p(?:#(?:[0-9a-fA-F]{2}))*t', re.IGNORECASE)
 
 # Function to check for JavaScript code in the PDF
 def check_for_js_code(pdf_file_path):
     decoded_text = read_pdf(pdf_file_path)  # Read PDF and decode
-    if ("/javascript" in decoded_text.lower()) or ("/js" in decoded_text.lower()) or ("/jscript" in decoded_text.lower()) or ("/ecmascript" in decoded_text.lower()):
+    if (" /javascript" in decoded_text.lower()) or (" /js" in decoded_text.lower()):
         return True
     decoded_input = re.sub(r'#([0-9a-fA-F]{2})', decode_hex, decoded_text)
     js_match = js_pattern.search(decoded_input)
@@ -155,12 +155,12 @@ def remove_js_code():
         # Read all bytes from the PDF
         pdf_bytes = pdf_file.read()
         # # Define JavaScript patterns
-    js_pattern = re.compile(rb'/[jJ][sS](?:#(?:[0-9a-fA-F]{2}))*\s+', re.IGNORECASE)
-    javascript_pattern = re.compile(rb'/(?:#(?:[0-9a-fA-F]{2}))*J(?:#(?:[0-9a-fA-F]{2}))*a(?:#(?:[0-9a-fA-F]{2}))*v(?:#(?:[0-9a-fA-F]{2}))*a(?:#(?:[0-9a-fA-F]{2}))*S(?:#(?:[0-9a-fA-F]{2}))*c(?:#(?:[0-9a-fA-F]{2}))*r(?:#(?:[0-9a-fA-F]{2}))*i(?:#(?:[0-9a-fA-F]{2}))*p(?:#(?:[0-9a-fA-F]{2}))*t\s+', re.IGNORECASE)
+    js_pattern = re.compile(rb' /[jJ][sS](?:#(?:[0-9a-fA-F]{2}))*\s+', re.IGNORECASE)
+    javascript_pattern = re.compile(rb' /(?:#(?:[0-9a-fA-F]{2}))*J(?:#(?:[0-9a-fA-F]{2}))*a(?:#(?:[0-9a-fA-F]{2}))*v(?:#(?:[0-9a-fA-F]{2}))*a(?:#(?:[0-9a-fA-F]{2}))*S(?:#(?:[0-9a-fA-F]{2}))*c(?:#(?:[0-9a-fA-F]{2}))*r(?:#(?:[0-9a-fA-F]{2}))*i(?:#(?:[0-9a-fA-F]{2}))*p(?:#(?:[0-9a-fA-F]{2}))*t\s+', re.IGNORECASE)
 
     # Replace JavaScript patterns with an empty string in the PDF bytes
-    modified_pdf_bytes = js_pattern.sub(b'/jt', pdf_bytes)
-    modified_pdf_bytes = javascript_pattern.sub(b'/jT', modified_pdf_bytes)
+    modified_pdf_bytes = js_pattern.sub(b'', pdf_bytes)
+    modified_pdf_bytes = javascript_pattern.sub(b'', modified_pdf_bytes)
 
     # Create a new PDF file with "-removed.pdf" postfix
     with open(pdf_file_path, 'wb') as pdf_file:
@@ -259,8 +259,6 @@ def exit_window():
 
 
 
-
-
 # Create a Tkinter window
 
 root.title("PDF Shield")
@@ -293,56 +291,5 @@ root.resizable(False, False)
 
 # Run the Tkinter main loop
 root.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-# Function to handle file drop event and display PDF cover
-# ...
-
-# # Function to handle file drop event and display PDF cover
-# def drop_and_display(event):
-#     file_path = event.data
-#     file_path = file_path.strip('{}')  # Remove curly braces if present
-#     print(file_path)
-
-#     # Display PDF cover if it's a PDF file
-#     if file_path.endswith(".pdf"):
-#         # Load the PDF cover image
-#         pdf_cover = Image.open("pdf_cover.png")
-#         pdf_cover.thumbnail((250, 250))  # Adjust size if needed
-#         pdf_cover = ImageTk.PhotoImage(pdf_cover)
-
-#         # Update the label with the PDF cover image
-#         cover_label.config(image=pdf_cover)
-#         cover_label.image = pdf_cover  # Keep a reference to prevent garbage collection
-
-#         # Display the file name
-#         file_name = file_path.split("/")[-1]
-#         file_label.config(text=file_name)
-
-#         # Check for JavaScript code
-#         with fitz.open(file_path) as pdf_document:
-#             has_js_code = any(x.is_js for x in pdf_document)
-
-#         if has_js_code:
-#             # Show "Remove" and "Show" buttons
-#             remove_button.pack()
-#             show_button.pack()
-#             exit_button.pack_forget()
-#         else:
-#             # Show "Exit" button
-#             exit_button.pack()
-#             remove_button.pack_forget()
-#             show_button.pack_forget()
-#     else:
-#         file_label.config(text="Not a PDF file")
 
 
