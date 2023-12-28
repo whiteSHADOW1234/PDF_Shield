@@ -140,7 +140,8 @@ Before executing it, ensure that you've executed the following commands in the t
    ![By_AiNZla](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/b6d35e23-4587-4fb4-9b92-6ddd44e330d3)
 4. However, if you upload the file `embedded.pdf`, the script will detect the JavaScript code.
 
-    ![image](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/d6d9749a-0e2c-441d-b4cb-4f193f6c4737)
+    ![image](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/496e4203-452c-48d6-a74b-882ae8198651)
+
 
 5. You can view more information about the discovered objects by clicking the `Show` button after dropping an embedded PDF file. These details include numbers, generations, and contents.
 
