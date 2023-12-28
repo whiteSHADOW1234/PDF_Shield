@@ -111,11 +111,11 @@
 &nbsp;&nbsp;Using the fundamental PDF concept described in the **"Basic PDF Syntax"** section, we can infer that if we remove the object containing `/JavaScript` from the PDF, the JavaScript code will no longer be able to be executed by modern browsers' built-in PDF reader engines.
 
 &nbsp;&nbsp;Let me clarify the key aspects of this project briefly:
-    1. Users can upload their PDF files.
-    2. The project reads the PDF content in text mode.
-    3. It uses regular expressions to identify any instances of `/JS` or `/JavaScript`.
-    4. If such variations are detected, it displays the corresponding object in a separate pop-up window.
-    5. Additionally, the system should have the capability to remove the identified objects from the PDF.
+1. Users can upload their PDF files.
+2. The project reads the PDF content in text mode.
+3. It uses regular expressions to identify any instances of `/JS` or `/JavaScript`.
+4. If such variations are detected, it displays the corresponding object in a separate pop-up window.
+5. Additionally, the system should have the capability to remove the identified objects from the PDF.
 
 
 
@@ -140,7 +140,8 @@ Before executing it, ensure that you've executed the following commands in the t
    ![By_AiNZla](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/b6d35e23-4587-4fb4-9b92-6ddd44e330d3)
 4. However, if you upload the file `embedded.pdf`, the script will detect the JavaScript code.
 
-    ![HJqznN-ga](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/0f190c73-b71d-4453-a247-0cc85f710f6c)
+    ![image](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/d6d9749a-0e2c-441d-b4cb-4f193f6c4737)
+
 5. You can view more information about the discovered objects by clicking the `Show` button after dropping an embedded PDF file. These details include numbers, generations, and contents.
 
     ![SkuqhE-ep](https://github.com/whiteSHADOW1234/PDF_Sheld/assets/91242001/34a8e1c7-9580-4709-9638-c7937b477e00)
