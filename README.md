@@ -184,17 +184,19 @@ Take JavaScript embedded attack as example:
 
 ## Demo
 ### JavaScript Embedded Attack
-*Take JavaScript Infinite Loop as example*
+- *Take JavaScript Infinite Loop as an example*
 [![JavaScript Embedded Attack](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/87b92dff-2596-47d6-87d4-f44b61217266)](https://youtu.be/YECyB_2DBI4)
 
 ### Name Object Infinite Loops
+- *Take the PDFs from [RUB-NDS/PDF101](https://github.com/RUB-NDS/PDF101/tree/master/01-testsuite/01-dos/01-infinite-loop) as an example*
 [![Name Object Infinite Loops](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/3be92f6b-04ff-42e0-b90d-3d3558ab7331)](https://youtu.be/fmv2-pQEf5s)
 
 ### Deflate Bomb
-- Video (In progress...)
+- *Take the PDFs from [RUB-NDS/PDF101](https://github.com/RUB-NDS/PDF101/tree/master/01-testsuite/01-dos/02-deflate-bomb) as an example*
+[![Deflate Bomb](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/a2afce92-d8e9-4341-a9b1-7fc08350d4f9)](https://youtu.be/VrxnMXuYC44)
 
 ### Other Compound Attacks
-*Take JavaScript Embedded Attack plus Deflate Bomb as example*
+- *Take `JavaScript Embedded Attack` plus `Deflate Bomb` as an example*
 [![Other Compound Attacks](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/0186ff01-d10d-45f9-90bb-d09c939ef10c)](https://youtu.be/eGnJiNEzw_Q)
 
 
