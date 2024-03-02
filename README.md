@@ -185,17 +185,17 @@ Take JavaScript embedded attack as example:
 ## Demo
 ### JavaScript Embedded Attack
 *Take JavaScript Infinite Loop as example*
-- Video
+- Video (In progress...)
 
 ### Name Object Infinite Loops
-- Video
+- Video (In progress...)
 
 ### Deflate Bomb
-- Video
+- Video (In progress...)
 
 ### Other Compound Attacks
 *Take JavaScript Embedded Attack plus Deflate Bomb as example*
-- Video
+- Video (In progress...)
 
 
 ## References & Relative News
