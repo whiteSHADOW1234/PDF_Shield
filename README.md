@@ -12,7 +12,7 @@ This tool aims to provide users with an additional layer of security by analyzin
 
 <!---
 <details>
-    <summary>📝 Basic PDF Syntax
+    <summary>???? Basic PDF Syntax
     </summary>
 &nbsp;&nbsp;You can gain valuable insights into PDF syntax by watching this informative video titled <a href="https://www.youtube.com/watch?v=k9g9jZdjRcE&ab_channel=TROOPERSITSecurityConference">TROOPERS15 Ange Albertini and Kurt Pfeifle - Mastering Advanced PDF Techniques.</a>
     
@@ -69,9 +69,9 @@ This tool aims to provide users with an additional layer of security by analyzin
 
 
 ## Attacker Model
-• Victim opens malicious PDF document
-• Bad things happen (attack-dependent)
-• No user interaction required
+- Victim opens malicious PDF document
+- Bad things happen (attack-dependent)
+- No user interaction required
 
 ## Simple Attack Method
 Take JavaScript embedded attack as example:
