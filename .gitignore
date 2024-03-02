@@ -1,0 +1,5 @@
+infinite_object_loop_graph.png
+testing_stuff/
+.vscode/
+__pycache__/
+functions/__pycache__/
