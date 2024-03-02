@@ -188,7 +188,7 @@ Take JavaScript embedded attack as example:
 [![JavaScript Embedded Attack](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/87b92dff-2596-47d6-87d4-f44b61217266)](https://youtu.be/YECyB_2DBI4)
 
 ### Name Object Infinite Loops
-- Video (In progress...)
+[![Name Object Infinite Loops](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/3be92f6b-04ff-42e0-b90d-3d3558ab7331)](https://youtu.be/fmv2-pQEf5s)
 
 ### Deflate Bomb
 - Video (In progress...)
