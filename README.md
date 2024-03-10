@@ -167,20 +167,21 @@ Take JavaScript embedded attack as example:
 1. `git clone` this repository and don't forgot to run `pip install -r requirements.txt`.
 2. Execute the `main.py` file.
 3. And now download a PDF file.
-4. Sit back, Relax and wait for the scanning process done.
-<!---
+4. Sit back, relax, and wait for the scanning process to be completed.
+
 ### II. Manually drag-and-drop a PDF file for scanning
-1. Download the `listen` folder located in the `output` directory.
-2. Right-click the downloaded folder and `Create a Shortcut` on your Desktop.
-3. Drag-and-drop the PDF you want to scan onto the icon.
-4. Sit back, Relax and wait for the scanning process done.
+1. Download the [`PDF Shield` zipped file](https://github.com/whiteSHADOW1234/PDF_Shield/blob/main/output/PDF%20Shield.zip) located in the `output` directory.
+2. Unzip it on your device.
+3. Locate the `PDF Shield.exe` in the unzipped folder and right-click on it to `Create a Shortcut` on your Desktop.
+4. Drag-and-drop the PDF you want to scan onto the icon.
+5. Sit back, relax, and wait for the scanning process to be completed.
 
 ### III. Automatically scan any downloaded PDF file
-1. Download the `listen` folder located in the `output` directory.
-2. Double-click the `listen.exe` in the downloaded folder.
-3. And now download a PDF file.
-4. Sit back, Relax and wait for the scanning process done.
--->
+1. Download the [`PDF Shield` zipped file](https://github.com/whiteSHADOW1234/PDF_Shield/blob/main/output/PDF%20Shield.zip) located in the `output` directory.
+2. Unzip it on your device.
+3. Double-click the `PDF Shield.exe` in the unzipped folder to start the scanning program.
+4. Now, download a PDF file.
+5. Sit back, relax, and wait for the scanning process to be completed.
 
 ## Demo
 ### JavaScript Embedded Attack
