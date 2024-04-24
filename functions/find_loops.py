@@ -3,6 +3,7 @@ import re
 import networkx as nx
 import matplotlib.pyplot as plt
 import subprocess
+import tkinter as tk
 
 import matplotlib
 matplotlib.use('SVG')
