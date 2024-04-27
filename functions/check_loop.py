@@ -67,8 +67,8 @@ def check_loop(path):
                         G.add_edge(current_num, i.split()[0])
                                 
                 else:
-                    current_num = item.split()[0]
-                    current_gen = item.split()[1]
+                    current_num = item[0]
+                    current_gen = item[1]
                     dynamic_regex = generate_regex(f"{current_num} {current_gen} obj")
                     matches = dynamic_regex.findall(decoded_pdf_text)
                     if matches:
