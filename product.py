@@ -113,7 +113,7 @@ class ProductApp:
                 pdf_bytes = pdf_file.read()
 
             # Use regular expressions to find the block
-            pattern = rb'endobj(?:(?!endobj).)*?/JS[^/]*\n.*?endobj'
+            pattern = rb'endobj(?:(?!endobj).)*?/(?:J|#74)(?:S|#83)[^/]*\n.*?endobj'
             matches = re.findall(pattern, pdf_bytes, re.DOTALL)
 
             if matches:
@@ -138,8 +138,8 @@ class ProductApp:
                 pdf_bytes = pdf_file.read()
             
             # Define JavaScript patterns
-            js_pattern = re.compile(rb'\/JS\s*', re.IGNORECASE)
-            javascript_pattern = re.compile(rb'\/JavaScript\s*', re.IGNORECASE)
+            js_pattern = re.compile(rb'\/(?:J|#74)(?:S|#83)\s*', re.IGNORECASE)
+            javascript_pattern = re.compile(rb'\/(?:J|#74)(?:a|#97)(?:v|#118)(?:a|#97)(?:S|#83)(?:c|#99)(?:r|#114)(?:i|#105)(?:p|#112)(?:t|#116)\s*', re.IGNORECASE)
 
             # Replace JavaScript name objects with empty strings
             modified_pdf_bytes = js_pattern.sub(b'', pdf_bytes)
@@ -176,11 +176,7 @@ class ProductApp:
             # decoded_pdf_text = pdf_bytes.decode('utf-8', errors='ignore')  # 'ignore' handles non-UTF-8 bytes
 
             # Use regular expressions to find the block
-            # pattern = rb'endobj(?:(?!endobj).)*?\/(?:FlateDecode|ASCIIHexDecode|DCTDecode)(?=\/(?:FlateDecode|ASCIIHexDecode|DCTDecode)).*?endobj'
-            # matches = re.findall(pattern, pdf_bytes, re.DOTALL)
-            elements_set = [b"/FlateDecode", b"/ASCIIHexDecode", b"/DCTDecode"]
-            pattern = re.compile(b'\d+\s+\d+\s+obj(?:(?!\d+\s+\d+\s+obj).)*?(?=(?:' + b'|'.join(re.escape(elem) for elem in elements_set) + b')(?:' + b'|'.join(re.escape(elem) for elem in elements_set) + b')).*?endobj', re.DOTALL)
-
+            pattern = re.compile(b'\d+\s+\d+\s+obj(?:(?!\d+\s+\d+\s+obj).)*?(?=(?:\/(?:F|#70)(?:l|#108)(?:a|#97)(?:t|#116)(?:e|#101)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:A|#65)(?:S|#83)(?:C|#67)(?:I|#73)(?:I|#73)(?:H|#72)(?:e|#101)(?:x|#120)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:D|#68)(?:C|#67)(?:T|#84)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101))(?:\/(?:F|#70)(?:l|#108)(?:a|#97)(?:t|#116)(?:e|#101)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:A|#65)(?:S|#83)(?:C|#67)(?:I|#73)(?:I|#73)(?:H|#72)(?:e|#101)(?:x|#120)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:D|#68)(?:C|#67)(?:T|#84)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101))).*?endobj', re.DOTALL)
             matches = pattern.findall(pdf_bytes)
 
             # output_file_path = pdf_file_path.replace('-show.pdf', '-removed.pdf')
@@ -224,9 +220,7 @@ class ProductApp:
             # decoded_pdf_text = pdf_bytes.decode('utf-8', errors='ignore')  # 'ignore' handles non-UTF-8 bytes
 
             # Use regular expressions to find the block
-            elements_set = [b"/FlateDecode", b"/ASCIIHexDecode", b"/DCTDecode"]
-            pattern = re.compile(b'(?:(?!endobj).)*?(?=(?:' + b'|'.join(re.escape(elem) for elem in elements_set) + b')(?:' + b'|'.join(re.escape(elem) for elem in elements_set) + b')).*?endobj', re.DOTALL)
-
+            pattern = re.compile(b'\d+\s+\d+\s+obj(?:(?!\d+\s+\d+\s+obj).)*?(?=(?:\/(?:F|#70)(?:l|#108)(?:a|#97)(?:t|#116)(?:e|#101)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:A|#65)(?:S|#83)(?:C|#67)(?:I|#73)(?:I|#73)(?:H|#72)(?:e|#101)(?:x|#120)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:D|#68)(?:C|#67)(?:T|#84)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101))(?:\/(?:F|#70)(?:l|#108)(?:a|#97)(?:t|#116)(?:e|#101)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:A|#65)(?:S|#83)(?:C|#67)(?:I|#73)(?:I|#73)(?:H|#72)(?:e|#101)(?:x|#120)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:D|#68)(?:C|#67)(?:T|#84)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101))).*?endobj', re.DOTALL)
             matches = pattern.findall(pdf_bytes)
 
             if matches:
@@ -240,7 +234,7 @@ class ProductApp:
                 with open(output_file_path, 'wb') as output_pdf_file:
                     output_pdf_file.write(modified_pdf_bytes)
             else:
-                print("No bomb block found in the PDF. line[238] in product.py")
+                print("No bomb block found in the PDF.")
 
             print("SHOW PDF: " + pdf_file_path)
             os.remove(pdf_file_path)
@@ -254,7 +248,7 @@ class ProductApp:
                 pdf_bytes = pdf_file.read()
 
             # Use regular expressions to find the block
-            pattern = rb'endobj(?:(?!endobj).)*?/JS[^/]*\n.*?endobj'
+            pattern = rb'endobj(?:(?!endobj).)*?/(?:J|#74)(?:S|#83)[^/]*\n.*?endobj'
             matches = re.findall(pattern, pdf_bytes, re.DOTALL)
 
             if matches:
@@ -276,8 +270,8 @@ class ProductApp:
                 pdf_bytes = pdf_file.read()
             
             # Define JavaScript patterns
-            js_pattern = re.compile(rb'\/JS\s*', re.IGNORECASE)
-            javascript_pattern = re.compile(rb'\/JavaScript\s*', re.IGNORECASE)
+            js_pattern = re.compile(rb'\/(?:J|#74)(?:S|#83)\s*', re.IGNORECASE)
+            javascript_pattern = re.compile(rb'\/(?:J|#74)(?:a|#97)(?:v|#118)(?:a|#97)(?:S|#83)(?:c|#99)(?:r|#114)(?:i|#105)(?:p|#112)(?:t|#116)\s*', re.IGNORECASE)
 
             # Replace JavaScript name objects with empty strings
             modified_pdf_bytes = js_pattern.sub(b'', pdf_bytes)
