@@ -41,7 +41,7 @@ def check_loop(path):
         decoded_pdf_text = pdf_bytes.decode('utf-8', errors='ignore')  # 'ignore' handles non-UTF-8 bytes
 
         # Use regular expressions to find the block
-        pattern = re.compile(r'(?:\d+ \d+ obj|(?:\/Pages|\/OpenAction|\/Next|\/Kids|\/Extends|\/First|\/AA<<\/O|\/Contents)\s?\[?[\d+ \d+ R]+\]?)')
+        pattern = re.compile(r'(?:\d+ \d+ obj|(?:\/(?:P|#80)(?:a|#97)(?:g|#103)(?:e|#101)(?:s|#115)|\/(?:O|#79)(?:p|#112)(?:e|#101)(?:n|#110)(?:A|#65)(?:c|#99)(?:t|#116)(?:i|#105)(?:o|#111)(?:n|#110)|\/(?:N|#78)(?:e|#101)(?:x|#120)(?:t|#116)|\/(?:K|#75)(?:i|#105)(?:d|#100)(?:s|#115)|\/(?:E|#69)(?:x|#120)(?:t|#116)(?:e|#101)(?:n|#110)(?:d|#100)(?:s|#115)|\/(?:F|#70)(?:i|#105)(?:r|#114)(?:s|#115)(?:t|#116)|\/(?:A|#65)(?:A|#65)<<\/(?:O|#79)|\/(?:C|#67)(?:o|#111)(?:n|#110)(?:t|#116)(?:e|#101)(?:n|#110)(?:t|#116)(?:s|#115))\s?\[?[\d+ \d+ R]+\]?)')
         matches = pattern.findall(decoded_pdf_text)
 
         if matches:
@@ -52,7 +52,8 @@ def check_loop(path):
             for item in matches:
                 # print("CHECKING...")
                 if item[0] == '/':
-                    if "/Kids" in item:
+                    kids_pattern = re.compile(r'(?:K|#75)(?:i|#105)(?:d|#100)(?:s|#115)')
+                    if kids_pattern.search(item):
                         # print("Found Kids")
                         # print(item)
                         child = extract_child_objects(item)
@@ -67,13 +68,13 @@ def check_loop(path):
                         G.add_edge(current_num, i.split()[0])
                                 
                 else:
-                    current_num = item[0]
-                    current_gen = item[1]
+                    current_num = item.split()[0]
+                    current_gen = item.split()[1]
                     dynamic_regex = generate_regex(f"{current_num} {current_gen} obj")
                     matches = dynamic_regex.findall(decoded_pdf_text)
                     if matches:
                         # Find the number between "/D [" and " /Fit]" by using regular expression
-                        find_fit = re.compile(r'(?<=/D\[)\d(?=/Fit\])')
+                        find_fit = re.compile(r'/(?:D|#68)\[(\d)/(?:F|#70)(?:i|#105)(?:t|#116)\]')
                         if matches[0]:
                             fit_matches = find_fit.findall(matches[0])
 
