@@ -20,10 +20,10 @@ def check_js(path):
     decoded_pdf_text = pdf_bytes.decode('utf-8', errors='ignore')  # 'ignore' handles non-UTF-8 bytes
 
     # Use regular expressions to find the block
-    js_pattern = r'\/(J|#74)(S|#83)\s*'
+    js_pattern = r'\/(?:J|#74)(?:S|#83)\s*'
     js_matches = re.findall(js_pattern, decoded_pdf_text, re.DOTALL)
 
-    javascript_pattern = r'\/(J|#74)(a|#97)(v|#118)(a|#97)(S|#83)(c|#99)(r|#114)(i|#105)(p|#112)(t|#116)\s*'
+    javascript_pattern = r'\/(?:J|#74)(?:a|#97)(?:v|#118)(?:a|#97)(?:S|#83)(?:c|#99)(?:r|#114)(?:i|#105)(?:p|#112)(?:t|#116)\s*'
     javascript_matches = re.findall(javascript_pattern, decoded_pdf_text, re.DOTALL)
 
     matches = js_matches + javascript_matches

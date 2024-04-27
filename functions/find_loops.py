@@ -41,7 +41,8 @@ def find_loops(pdf_path, root):
     self_recursion = False
 
     # Use regular expressions to find the block contains
-    pattern = re.compile(r'(?:\d+ \d+ obj|(?:\/Pages|\/OpenAction|\/Next|\/Kids|\/Extends|\/First|\/AA<<\/O|\/Contents)\s?\[?[\d+ \d+ R]+\]?)')
+    # pattern = re.compile(r'(?:\d+ \d+ obj|(?:\/Pages|\/OpenAction|\/Next|\/Kids|\/Extends|\/First|\/AA<<\/O|\/Contents)\s?\[?[\d+ \d+ R]+\]?)')
+    pattern = re.compile(r'(?:\d+ \d+ obj|(?:\/(?:P|#80)(?:a|#97)(?:g|#103)(?:e|#101)(?:s|#115)|\/(?:O|#79)(?:p|#112)(?:e|#101)(?:n|#110)(?:A|#65)(?:c|#99)(?:t|#116)(?:i|#105)(?:o|#111)(?:n|#110)|\/(?:N|#78)(?:e|#101)(?:x|#120)(?:t|#116)|\/(?:K|#75)(?:i|#105)(?:d|#100)(?:s|#115)|\/(?:E|#69)(?:x|#120)(?:t|#116)(?:e|#101)(?:n|#110)(?:d|#100)(?:s|#115)|\/(?:F|#70)(?:i|#105)(?:r|#114)(?:s|#115)(?:t|#116)|\/(?:A|#65)(?:A|#65)<<\/(?:O|#79)|\/(?:C|#67)(?:o|#111)(?:n|#110)(?:t|#116)(?:e|#101)(?:n|#110)(?:t|#116)(?:s|#115))\s?\[?[\d+ \d+ R]+\]?)')
     matches = pattern.findall(decoded_pdf_text)
 
     if matches:
@@ -51,7 +52,8 @@ def find_loops(pdf_path, root):
 
         for item in matches:
             if item[0] == '/':
-                if "/Kids" in item:
+                kids_pattern = re.compile(r'(?:K|#75)(?:i|#105)(?:d|#100)(?:s|#115)')
+                if kids_pattern.search(item):
                     print("Found Kids")
                     print(item)
                     child = extract_child_objects(item)
@@ -73,7 +75,7 @@ def find_loops(pdf_path, root):
                 matches = dynamic_regex.findall(decoded_pdf_text)
                 if matches:
                     # Find the number between "/D [" and " /Fit]" by using regular expression
-                    find_fit = re.compile(r'(?<=/D\[)\d(?=/Fit\])')
+                    find_fit = re.compile(r'/(?:D|#68)\[(\d)/(?:F|#70)(?:i|#105)(?:t|#116)\]')
                     print("OBJECTS MATCHES:")
                     print(matches)
 

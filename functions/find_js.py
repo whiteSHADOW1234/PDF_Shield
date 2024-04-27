@@ -37,7 +37,7 @@ def find_js_blocks(pdf_path, root):
     decoded_pdf_text = delete_after_eof(pdf_bytes.decode('utf-8', errors='ignore'))  # 'ignore' handles non-UTF-8 bytes
 
     # Use regular expressions to find the block
-    pattern = r'endobj(?:(?!endobj).)*?\/JS.*?endobj'
+    pattern = r'endobj(?:(?!endobj).)*?\/(?:J|#74)(?:S|#83).*?endobj'
     matches = re.findall(pattern, decoded_pdf_text, re.DOTALL)
 
     # find if there's a name object right after the JS object
