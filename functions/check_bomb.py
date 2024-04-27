@@ -28,9 +28,9 @@ def check_bomb(path):
     # flatedecode_pattern = r'\/(?:FlateDecode|ASCIIHexDecode|DCTDecode)(?=\/(?:FlateDecode|ASCIIHexDecode|DCTDecode))'
     # matches = re.findall(flatedecode_pattern, decoded_pdf_text, re.DOTALL)
 
-    elements_set = ["/FlateDecode", "/ASCIIHexDecode", "/DCTDecode"]
-    pattern = re.compile(r'\d+\s+\d+\s+obj(?:(?!\d+\s+\d+\s+obj).)*?(?=(?:' + '|'.join(re.escape(elem) for elem in elements_set) + r')(?:' + '|'.join(re.escape(elem) for elem in elements_set) + r')).*?endobj', re.DOTALL)
-
+    # elements_set = ["/FlateDecode", "/ASCIIHexDecode", "/DCTDecode"]
+    # pattern = re.compile(r'\d+\s+\d+\s+obj(?:(?!\d+\s+\d+\s+obj).)*?(?=(?:' + '|'.join(re.escape(elem) for elem in elements_set) + r')(?:' + '|'.join(re.escape(elem) for elem in elements_set) + r')).*?endobj', re.DOTALL)
+    pattern = re.compile(r'\d+\s+\d+\s+obj(?:(?!\d+\s+\d+\s+obj).)*?(?=(?:\/(?:F|#70)(?:l|#108)(?:a|#97)(?:t|#116)(?:e|#101)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:A|#65)(?:S|#83)(?:C|#67)(?:I|#73)(?:I|#73)(?:H|#72)(?:e|#101)(?:x|#120)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:D|#68)(?:C|#67)(?:T|#84)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101))(?:\/(?:F|#70)(?:l|#108)(?:a|#97)(?:t|#116)(?:e|#101)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:A|#65)(?:S|#83)(?:C|#67)(?:I|#73)(?:I|#73)(?:H|#72)(?:e|#101)(?:x|#120)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101)|\/(?:D|#68)(?:C|#67)(?:T|#84)(?:D|#68)(?:e|#101)(?:c|#99)(?:o|#111)(?:d|#100)(?:e|#101))).*?endobj', re.DOTALL)
     matches = pattern.findall(decoded_pdf_text)
 
     # os.remove(pdf_path)
