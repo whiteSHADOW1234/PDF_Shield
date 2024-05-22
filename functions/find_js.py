@@ -39,6 +39,12 @@ def find_js_blocks(pdf_path, root):
     # Use regular expressions to find the block
     pattern = r'endobj(?:(?!endobj).)*?\/(?:J|#74)(?:S|#83).*?endobj'
     matches = re.findall(pattern, decoded_pdf_text, re.DOTALL)
+    
+    # Add the FontMatrix pattern to the regular expression
+    fontmatrix_pattern = r'endobj(?:(?!endobj).)*?\/(?:F|#46)(?:o|#111)(?:n|#110)(?:t|#116)(?:M|#77)(?:a|#97)(?:t|#116)(?:r|#114)(?:i|#105)(?:x|#120).*?endobj'
+    fontmatrix_matches = re.findall(fontmatrix_pattern, decoded_pdf_text, re.DOTALL)
+    
+    matches += fontmatrix_matches
 
     # find if there's a name object right after the JS object
     # emb_pattern = r'endobj(?:(?!endobj).)*?\/JS\s+(?:\[\s*\d+\s+\d+\s+R\s*\]|\d+\s+\d+\s+R).*?endobj'

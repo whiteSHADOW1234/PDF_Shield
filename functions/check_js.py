@@ -25,8 +25,12 @@ def check_js(path):
 
     javascript_pattern = r'\/(?:J|#74)(?:a|#97)(?:v|#118)(?:a|#97)(?:S|#83)(?:c|#99)(?:r|#114)(?:i|#105)(?:p|#112)(?:t|#116)\s*'
     javascript_matches = re.findall(javascript_pattern, decoded_pdf_text, re.DOTALL)
+    
+    # Update defense method for CVE-2024-4367
+    fontmatrix_pattern = r'\/(?:F|#46)(?:o|#111)(?:n|#110)(?:t|#116)(?:M|#77)(?:a|#97)(?:t|#116)(?:r|#114)(?:i|#105)(?:x|#120)\s*'
+    fontmatrix_matches = re.findall(fontmatrix_pattern, decoded_pdf_text, re.DOTALL)
 
-    matches = js_matches + javascript_matches
+    matches = js_matches + javascript_matches + fontmatrix_matches
     # os.remove(pdf_path)
 
     if matches:

@@ -115,17 +115,23 @@ class ProductApp:
             # Use regular expressions to find the block
             pattern = rb'endobj(?:(?!endobj).)*?/(?:J|#74)(?:S|#83)[^/]*\n.*?endobj'
             matches = re.findall(pattern, pdf_bytes, re.DOTALL)
+            
+            # Add FontMatrix pattern to the regular expression
+            fontmatrix_pattern = rb'endobj(?:(?!endobj).)*?/(?:F|#70)(?:o|#111)(?:n|#110)(?:t|#116)(?:M|#77)(?:a|#97)(?:t|#116)(?:r|#114)(?:i|#105)(?:x|#120).*?endobj'
+            fontmatrix_matches = re.findall(fontmatrix_pattern, pdf_bytes, re.DOTALL)
+            
+            matches += fontmatrix_matches
 
-            if matches:
-                modified_pdf_bytes = pdf_bytes
-                for match in matches:
-                    # Replace the matched block with "endobj" <-- the 'endobj' of the object above
-                    modified_pdf_bytes = modified_pdf_bytes.replace(match, b"endobj")
+            # if matches:
+            modified_pdf_bytes = pdf_bytes
+            for match in matches:
+                # Replace the matched block with "endobj" <-- the 'endobj' of the object above
+                modified_pdf_bytes = modified_pdf_bytes.replace(match, b"endobj")
 
-                # Create a new PDF file with "-removed.pdf" postfix
-                output_file_path = pdf_file_path.replace('-show.pdf', '-removed.pdf')
-                with open(output_file_path, 'wb') as output_pdf_file:
-                    output_pdf_file.write(modified_pdf_bytes)
+            # Create a new PDF file with "-removed.pdf" postfix
+            output_file_path = pdf_file_path.replace('-show.pdf', '-removed.pdf')
+            with open(output_file_path, 'wb') as output_pdf_file:
+                output_pdf_file.write(modified_pdf_bytes)
             # print("SHOW PDF: " + pdf_file_path)
             os.remove(pdf_file_path)
             # print("removed show pdf")
@@ -140,10 +146,13 @@ class ProductApp:
             # Define JavaScript patterns
             js_pattern = re.compile(rb'\/(?:J|#74)(?:S|#83)\s*', re.IGNORECASE)
             javascript_pattern = re.compile(rb'\/(?:J|#74)(?:a|#97)(?:v|#118)(?:a|#97)(?:S|#83)(?:c|#99)(?:r|#114)(?:i|#105)(?:p|#112)(?:t|#116)\s*', re.IGNORECASE)
+            # Add FontMatrix pattern to the regular expression
+            fontmatrix_pattern = re.compile(rb'\/(?:F|#70)(?:o|#111)(?:n|#110)(?:t|#116)(?:M|#77)(?:a|#97)(?:t|#116)(?:r|#114)(?:i|#105)(?:x|#120)\s*', re.IGNORECASE)
 
             # Replace JavaScript name objects with empty strings
             modified_pdf_bytes = js_pattern.sub(b'', pdf_bytes)
             modified_pdf_bytes = javascript_pattern.sub(b'', modified_pdf_bytes)
+            modified_pdf_bytes = fontmatrix_pattern.sub(b'', modified_pdf_bytes)
 
             # Create a new PDF file with "-removed.pdf" postfix
             with open(pdf_file_path, 'wb') as pdf_file:
