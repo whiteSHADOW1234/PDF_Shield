@@ -1,17 +1,25 @@
 ![PDF_Shield](https://socialify.git.ci/whiteSHADOW1234/PDF_Shield/image?description=1&descriptionEditable=A%20Python%20tool%20to%20detect%20and%20prevent%20PDF‑based%20DoS%0Aand%20Embedded%20JavaScript%20attacks.&forks=1&issues=1&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIj8%2BCjxzdmcgd2lkdGg9IjI4LjgiIGhlaWdodD0iMjguOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHJva2Utd2lkdGg9IjAuMDAwMjQwMDAwMDAwMDAwMDAwMDMiPgogPGcgY2xhc3M9ImxheWVyIj4KICA8dGl0bGU%2BTGF5ZXIgMTwvdGl0bGU%2BCiAgPGcgaWQ9IlNWR1JlcG9fdHJhY2VyQ2FycmllciIgc3Ryb2tlPSIjZDg0NjQ2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMC45NiI%2BCiAgIDxwYXRoIGQ9Im0yLjIyLDEyLjI3YzAsLTQuMzggMCwtNi41NyAwLjUyLC03LjMxYzAuNTIsLTAuNzQgMi41NywtMS40NCA2LjY4LC0yLjg1bDAuNzksLTAuMjdjMi4xNCwtMC43MyAzLjIyLC0xLjA5IDQuMzMsLTEuMDljMS4xMSwwIDIuMTksMC4zNyA0LjMzLDEuMDlsMC43OSwwLjI3YzQuMTEsMS40MSA2LjE3LDIuMTEgNi42OCwyLjg1YzAuNTIsMC43NCAwLjUyLDIuOTMgMC41Miw3LjMxYzAsMC42NiAwLDEuMzcgMCwyLjE1YzAsNy43MiAtNS44LDExLjQ3IC05LjQ0LDEzLjA2Yy0wLjk5LDAuNDIgLTEuNDgsMC42NCAtMi44NywwLjY0Yy0xLjQsMCAtMS44OSwtMC4yMiAtMi44NywtMC42NGMtMy42NCwtMS41OSAtOS40NCwtNS4zNCAtOS40NCwtMTMuMDZjMCwtMC43OCAwLC0xLjQ5IDAsLTIuMTV6IiBmaWxsPSIjZWM0YjRiIiBpZD0ic3ZnXzIiLz4KICA8L2c%2BCiAgPHRleHQgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IlNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGlkPSJzdmdfNCIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE0LjcxIiB4bWw6c3BhY2U9InByZXNlcnZlIiB5PSIxNy45NSI%2BUERGPC90ZXh0PgogPC9nPgo8L3N2Zz4%3D&name=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Light)
 [![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+##  Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Motivation](#motivation)
+- [Attack]
+
 ## Introduction 
 PDF Shield is a Python-based tool designed to detect and mitigate potential Denial of Service (DoS) attacks and embedded JavaScript threats within PDF files. By analyzing PDF structures, it helps users identify malicious content that could compromise system security.​
 
 ## Features
-- 🔍 **DoS Detection:** Identifies patterns that may lead to resource exhaustion.
+- **Automated PDF Monitoring:** Real-time scan of downloaded PDFs for potential DoS or malicious JavaScript.
 
-- ⚠️ **JavaScript Alerting:** Detects embedded JavaScript code that could be malicious.
+- **Drag & Drop:** Standalone executable supports drag-and-drop scanning on Windows.
 
-- 🛠️ **User-Friendly Interface:** Simple command-line usage for quick scanning.
+- **Customizable Alerts:** Pop-up notifications inform of embedded JS, infinite loops, deflate bombs.
 
-- 🧪 **Test Files Included:** Provides sample PDFs for testing and demonstration.
+- **Extensible:** Easily add new detection rules via a modular plugin architecture.
+
+- **Cross-Browser Defense:** Focused on PDF engines in Chrome, Edge, Brave (PDFium-based). However, our detection methods cover most common risks in PDF.js (Firefox) too.
 
 
 
@@ -170,7 +178,7 @@ Take JavaScript embedded attack as example:
 | PDFium does not properly handle certain out-of-memory conditions | Notice user there's a posiblity to have a deflate bomb in the PDF | CVE-2015-1271 |
 
 
-## How to Use
+## Usage
 
 ### I. Clone this repo and Automatically scan any downloaded PDF file
 1. `git clone` this repository and don't forgot to run `pip install -r requirements.txt`.
@@ -191,24 +199,6 @@ Take JavaScript embedded attack as example:
 3. Double-click the `PDF Shield.exe` in the unzipped folder to start the scanning program.
 4. Now, download a PDF file.
 5. Sit back, relax, and wait for the scanning process to be completed.
-
-## Demo
-### JavaScript Embedded Attack
-- *Take JavaScript Infinite Loop as an example*
-[![JavaScript Embedded Attack](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/87b92dff-2596-47d6-87d4-f44b61217266)](https://youtu.be/YECyB_2DBI4)
-
-### Name Object Infinite Loops
-- *Take the PDFs from [RUB-NDS/PDF101](https://github.com/RUB-NDS/PDF101/tree/master/01-testsuite/01-dos/01-infinite-loop) as an example*
-[![Name Object Infinite Loops](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/3be92f6b-04ff-42e0-b90d-3d3558ab7331)](https://youtu.be/fmv2-pQEf5s)
-
-### Deflate Bomb
-- *Take the PDFs from [RUB-NDS/PDF101](https://github.com/RUB-NDS/PDF101/tree/master/01-testsuite/01-dos/02-deflate-bomb) as an example*
-[![Deflate Bomb](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/a2afce92-d8e9-4341-a9b1-7fc08350d4f9)](https://youtu.be/VrxnMXuYC44)
-
-### Other Compound Attacks
-- *Take `JavaScript Embedded Attack` plus `Deflate Bomb` as an example*
-[![Other Compound Attacks](https://github.com/whiteSHADOW1234/PDF_Shield/assets/91242001/0186ff01-d10d-45f9-90bb-d09c939ef10c)](https://youtu.be/eGnJiNEzw_Q)
-
 
 ## References & Relative News
 - [PDF101](https://github.com/angea/PDF101)
