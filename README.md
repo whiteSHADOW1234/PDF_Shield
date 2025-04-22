@@ -24,6 +24,8 @@ PDF Shield is a Python-based tool designed to detect and mitigate potential Deni
 
 - **Extensible:** Easily add new detection rules via a modular plugin architecture.
 
+- **User-Friendly Interface:** Simple command-line & GUI interface for ease of use.
+
 - **Cross-Browser Defense:** Focused on PDF engines in Chrome, Edge, Brave (PDFium-based). However, our detection methods cover most common risks in PDF.js (Firefox) too.
 
 
